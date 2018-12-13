@@ -1,0 +1,17 @@
+do 
+switch case
+while (amig 9est nem irok)
+
+
+fájl feltöltés
+fájl letöltés
+fájl törlés
+
+külön mappa??
+
+lehet olyant, hogy játék saveingelésénél lefuttat egy parancsot?
+ - nyissa meg a klienset, kapott adatokat VAGY létrehozott TXT-t serverrel kommunikálja.
+ - server fut alapból játék futtatásától
+ - server újraírja a textet vagy hozzáfûzi a kapott adatokat (inkább)
+ - server lefuttat egy sorbarendezést, ha 10 nél több van, töröl.
+ ---- vagy nem is töröl, egyszerûen csak a legfelsõ 10et adja vissza a játéknak, de régiek a textben maradnak.

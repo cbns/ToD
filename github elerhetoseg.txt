@@ -1,0 +1,3 @@
+https://github.com/cbns/szoft_fejl_first.git
+
+git@github.com:cbns/szoft_fejl_first.git

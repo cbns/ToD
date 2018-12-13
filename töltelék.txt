@@ -1,0 +1,205 @@
+A JSON (JavaScript Object Notation) egy kis méretû, szöveg alapú szabvány, ember által olvasható adatcserére. A JavaScript szkriptnyelvbõl alakult ki egyszerû adatstruktúrák és asszociatív tömbök reprezentálására (a JSON-ban objektum a nevük). A JavaScripttel való kapcsolata ellenére nyelvfüggetlen, több nyelvhez is van értelmezõje. 
+
+Habár a JSON alapja a JavaScript szkriptnyelv egy részhalmaza és gyakran használják a JavaScript programokban, a JSON programnyelvfüggetlen. JSON adatok értelmezésére és generálására igen sok programozási nyelv ad kész eszközöket.
+
+A JSON-t legtöbbször egy szerver és egy kliens számítógép közti adatátvitelre használják (legtöbbször AJAX technológiával), az XML egyik alternatívájaként. Általánosságban strukturált adatok tárolására, továbbítására szolgál. 
+
+A JSON alap adattípusai:
+
+    Szám (double a JavaScriptben, általánosságban implementációfüggõ)
+    Karakterlánc (string: idézõjelek közt, Unicode karakterekbõl (alapból UTF-8 kódolásban) balra dõlõ törtvonallal (backslash, \) escape-elve)
+    Boolean (true (igaz) vagy false (hamis))
+    Tömb (értékek sorrendhelyes felsorolása vesszõvel elválasztva, szögletes zárójelek között; az értékeknek nem kell azonos típusúnak lennie benne)
+    Objektum (kulcs:érték-párok rendezetlen gyûjteménye, amelyben ':' karakter választja el a kulcsot és az értéket, a párok egymástól vesszõkkel vannak elválasztva, a lista kapcsos zárójelek között van; a kulcsok mindig string típusúak, és különbözniük kell egymástól)
+    null (üres)
+
+példa:
+
+{
+     "vezetekNev": "Kovács",
+     "keresztNev": "János",
+     "kor": 25,
+     "cim":
+     {
+         "utcaHazszam": "2. utca 21.",
+         "varos": "New York",
+         "allam": "NY",
+         "iranyitoSzam": "10021"
+     },
+     "telefonSzam":
+     [
+         {
+           "tipus": "otthoni",
+           "szam": "212 555-1234"
+         },
+         {
+           "tipus": "fax",
+           "szam": "646 555-4567"
+         }
+     ]
+ }
+
+
+
+Mivel a JSON a JavaScript részhalmaza, lehetséges (de nem ajánlott) a JSON szöveg objektumba való konvertálása a JavaScriptben található eval() függvénnyel. Például, ha a fenti JSON adat egy JavaScriptes string változóban van, melynek neve contact, p JavaScript objektumba lehet konvertálni a következõképp: 
+var p = eval("(" + contact + ")");
+
+megjegyz.:A contact változónak azért kell zárójelek között lennie, hogy elkerülje a JavaScript szintaxisban a kétértelmûségét.
+
+
+JSON séma példa:
+{
+    "name": "Termek",
+    "properties":
+    {
+        "id":
+        {
+            "type": "number",
+            "description": "Termékazonosító",
+            "required": true
+        },
+        "nev":
+        {
+            "type": "string",
+            "description": "Terméknév",
+            "required": true
+        },
+        "ar":
+        {
+            "type": "number",
+            "minimum": 0,
+            "required": true
+        },
+        "cimkek":
+        {
+            "type": "array",
+            "items":
+            {
+                "type": "string"
+            }
+        },
+        "keszlet":
+        {
+            "type": "object",
+            "properties":
+            {
+                "raktar":
+                {
+                    "type": "number"
+                },
+                "kereskedo":
+                {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
+
+A fenti JSON-séma használható például az alábbi adatok validálására: 
+
+{
+    "id": 1,
+    "nev": "Foo",
+    "ar": 123,
+    "cimkek": ["Bar","Eek"],
+    "keszlet": { "raktar": 300, "kereskedo": 20 }
+}
+
+Biztonsági problémák
+Habár a JSON egy adatformátum, JavaScriptbe épülése számos biztonsági problémát vet fel, amennyiben JavaScript értelmezõt használunk (eval). Ezzel a módszerrel veszélyes szkript is lefuthat, ami gyakori probléma az internetrõl érkezõ JSON-adatok esetében. Bár van más módszer is a JSON adatok értelmezésére, egyszerû és gyors mivolta miatt gyakran használják.
+
+Amennyiben elõvigyázatossági intézkedések nélkül az eval() függvényt használja egy programkód, akkor biztonsági réseket okozhat az eval-os eljárás, ha az adat és a teljes JavaScriptes rendszer nem áll egyetlen, megbízható forrás ellenõrzése alatt. Például, ha az adat nem megbízható, akkor az érkezõ adat lehetséges, hogy egy JavaScriptes kódbeszúrásos támadást idéz elõ. Emellett a bizalom ilyen megsértése okozhat adatlopást, autentikáció-hamisítást, és az adatok és erõforrások egyéb rossz használatát. A reguláris kifejezések használhatók az adatok validálására eval() esetén. 
+
+XML
+
+Az XML a strukturált adatok leírására és az objektumok szerializálására használt jelölõnyelv. Különbözõ XML-alapú protokollok léteznek, amelyek ugyanazon, JSON által is megvalósított adatstruktúrákat reprezentálják, ugyanazon adatcsere céljából. Amikor az adat XML-kódolású, általánosságban nagyobb méretû, mint JSON-os párja, leginkább a záró XML-címkék miatt. Mindazonáltal egy gzip-szerû tömörítõ eljárás használata esetén már nagyon kicsi a különbség, ugyanis a gzip igencsak lecsökkenti az ismétlõdõ mintázatokkal rendelkezõ fájlok méretét.
+
+Az XML-ben vannak alternatív módok a méret csökkentésére, ugyanis némely adatok lehetnek egyszerre gyermekként és attribútumként is megadva. Ez viszont bonyolíthatja az automatikus adatcserét, hiszen a különbözõ programoknak több különbözõ XML-implementációt kell tudniuk kezelni, ameddig nincs konkrétan megadva az implementáció típusa. Mindkét következõ XML-implementáció ugyanazon információkat hordozza, mint korábbi JSON-os társa. 
+
+példa képben
+<szemely>
+  <vezeteknev>Kovács</vezeteknev>
+  <keresztnev>János</keresztnev>
+  <kor>25</kor>
+  <cim>
+    <utcaHazszam>2. utca 21.</utcaHazszam>
+    <varos>New York</varos>
+    <allam>NY</allam>
+    <iranyitoSzam>10021</iranyitoSzam>
+  </cim>
+  <telefonSzam>
+    <telefon tipus="otthoni">212 555-1234</telefon>
+    <telefon tipus="fax">646 555-4567</telefon>
+  </telefonSzam>
+</szemely>
+
+<szemely vezetekNev="Kovács" keresztnev="János" kor="25">
+  <cim utcaHazszam="2. utca 21." varos="New York" allam="NY" iranyitoszam="10021" />
+  <telefonSzam>
+     <telefon tipus="otthoni" szam="212 555-1234"/>
+     <telefon tipus="fax"  szam="646 555-4567"/>
+  </telefonSzam>
+</szemely>
+
+Emiatt az XML akár hasonlón kicsi méretû is lehet, mint ugyanazon tartalom JSON-nal kódolva. Széles skálája érhetõ el az XML-dokumentum-értelmezõknek, így például a Document Object Model, az XPath és az XSLT. Az XML továbbá stílusokat is kaphat az azonnali használatra a CSS segítségével. Az XHTML az XML egyik formája, tehát a tartalom ilyen formában is közvetíthetõ, ami által közvetlenül beleilleszthetõ a weboldalba kliens oldali kódolás nélkül. 
+
+
+példa objektumra máshonnan:
+
+8. Examples
+
+   This is a JSON object:
+
+   {
+      "Image": {
+          "Width":  800,
+          "Height": 600,
+          "Title":  "View from 15th Floor",
+          "Thumbnail": {
+              "Url":    "http://www.example.com/image/481989943",
+              "Height": 125,
+              "Width":  "100"
+          },
+          "IDs": [116, 943, 234, 38793]
+
+
+
+Crockford                    Informational                      [Page 7]
+
+ 
+RFC 4627                          JSON                         July 2006
+
+
+        }
+   }
+
+   Its Image member is an object whose Thumbnail member is an object
+   and whose IDs member is an array of numbers.
+
+   This is a JSON array containing two objects:
+
+   [
+      {
+         "precision": "zip",
+         "Latitude":  37.7668,
+         "Longitude": -122.3959,
+         "Address":   "",
+         "City":      "SAN FRANCISCO",
+         "State":     "CA",
+         "Zip":       "94107",
+         "Country":   "US"
+      },
+      {
+         "precision": "zip",
+         "Latitude":  37.371991,
+         "Longitude": -122.026020,
+         "Address":   "",
+         "City":      "SUNNYVALE",
+         "State":     "CA",
+         "Zip":       "94085",
+         "Country":   "US"
+      }
+   ]
+
+

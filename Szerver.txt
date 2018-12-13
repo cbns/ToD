@@ -1,0 +1,19 @@
+Szerver mûködése.
+
+Játékprogram oldaláról:
+- A játékprogram fõmenûjében kiválasztható Eredmények menüpont kiválasztásával a Játék megjeleníti a tíz legjobb eredményt és megszerzõinek nevét. (3 nagy karakter)
+ - A játékprogram a játék menete során számolja az elért pontokat. A játék befejeztével a játékprogram bekér három nagybetûs karaktert, mellyel az elért pontszámot társítva eltárolja azokat. A tárolás bekövetkeztével megjeleníti a tíz legjobb eredményt és az azokat elérõ játékosok nevét.
+
+
+Kliens oldaláról:
+- A játék során elért pontszámot a játék befejeztével a játékos nevének (3 nagybetûs karakter) megadása után a játék elmenti egyetlen, egy soros "save.txt" nevû fájlban, mint eredményt.
+- Ezt az eredményt tartalmató fájlt a Kliens program megnyitja, feldolgozza és a benne lévõ információt elküldi a Szervernek.
+- A játékprogram eredményt elõhívó kérésére a Kliens lekéri a Szerverrõl az eltárolt adatokat, majd a játékprogramnak elküldve azok megjelenhetnek.
+
+
+Szerver oldaláról:
+- A Kliens a kommunikációt folyamatosan tartja a Szerverrel.
+- A Kliens az elért eredmény dokumentumát szöveges fájlban elküldi a Szervernek.
+- A Szerver ezt feldolgozza, Saját dokumentumában új sort kezdve ezt eltárolja.
+- Tárolást követõen a Szerver azonnal pontszámok szerinti csökkenõ sorrendbe rendezi a sorokat.
+- Kliens kérésére az elsõ tíz sort egy fájlba illeszti, majd mint lekérdezhetõ eredmény, elküldi annak.

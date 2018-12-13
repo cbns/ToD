@@ -1,0 +1,6 @@
+Egyszerûbb szerver-program
+
+- A játékprogram az elkészült eredményt eltárolja egy egysoros dokumentumba. (Bekért 3 karakteres név, elért pontszám) (tárolja dokumentumba, vagy csak küldje az információt?)
+- Ezt a dokumentumot a Szerver feldolgozza, beszúrja saját egyszerû szöveges adatbázisába. (save.txt)
+- Az adatokat tárolás után az elért pontszámok szerint azonnal csökkenõ sorrendbe rendezi, majd az esetlegesen tíznél nagyobb sorszámú sort levágja, majd a dokumentumot elmenti.
+- A játékprogram ezt a dokumentumot bármikor megnyithatja.

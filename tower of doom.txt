@@ -1,0 +1,58 @@
+hõs
+hercegnõ
+bossok
+fõboss a sárkány /+pusheen?/
+
+
+sima ellenfelek
+pusheen
+szellem
+
+
+demo módhoz cheat
+iddqd
+
+
+
+szintek:
+1 - kinti füves rész, rátalál a kastélyra
+2 - kastély sima alap
+3 - kastély, BOSS
+4 - jeges
+5 - sötét
+6 - sötét + BOSS
+7 - erdõs botanikus
+8 - botanikus erdõs felgyújtós + BOSS
+9 - kastély, sötétebb, 
+10 - k + hercegnõ + fõboss
+
+
+fizika:
+fákja fényhez
+sötét pályarészek
+lángoló kard - idõ után eltûnik a lángja
+
+
+
+grafika:
+romok
+pókháló
+erdõ
+gyertyák
+
+
+fegyverek:
+sima kard
+íj
+tüzes kard
+/*
+varázslónak pálca, tüzespálca
+varázslónak bónuszok
+*/
+
+
+mozgás, harcrendszer:
+WASD
+
+
+highscore rendszer kigondolása
